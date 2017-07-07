@@ -7,10 +7,10 @@ It's very easy to make some words **bold** and other words *italic* with Markdow
 * Item 2
   * Item 2a
   * Item 2b
-  ![GitHub Logo](/images/logo.png)
+  ![GitHub Logo](https://github.com/logo.png)
 Format: ![Alt Text](url)
-http://github.com - automatic!
-[GitHub](http://github.com)
+http://baidu.com - automatic!
+[GitHub](http://baidu.com)
 As Kanye West said:
 
 > We're living the future so
@@ -26,7 +26,3 @@ function fancyAlert(arg) {
   }
 }
 ```
-
-16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo@16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
