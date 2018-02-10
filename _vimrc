@@ -1,4 +1,10 @@
-set nocompatible "去掉VI一致性
+"OK
+scriptencoding utf-8
+if has('vim_starting')
+    if &compatible
+        set nocompatible "去掉VI一致性
+    endif
+endif
 filetype off
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
