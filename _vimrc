@@ -1,7 +1,7 @@
 scriptencoding utf-8
 if has('vim_starting')
     if &compatible
-        set nocompatible "È¥µôVIÒ»ÖÂĞÔ
+        set nocompatible "å»æ‰VIä¸€è‡´æ€§
     endif
 endif
 filetype off
@@ -9,13 +9,13 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'Yggdroot/indentLine' "¶ÔÆä´úÂëµÄĞéÏß
-Plugin 'tpope/vim-sensible' "Ã¿¸öÈË¶¼Í¬ÒâµÄÅäÖÃ
+Plugin 'Yggdroot/indentLine' "å¯¹å…¶ä»£ç çš„è™šçº¿
+Plugin 'tpope/vim-sensible' "æ¯ä¸ªäººéƒ½åŒæ„çš„é…ç½®
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'SpaceVim/SpaceVim'
 " -----------------------------------------------
-" ¼ÓÇ¿°æ×´Ì¬Ìõ
+" åŠ å¼ºç‰ˆçŠ¶æ€æ¡
 " -----------------------------------------------
 Plugin 'itchyny/lightline.vim'
 
@@ -34,67 +34,95 @@ let g:lightline = {
       \ }
 call vundle#end() 
 filetype plugin indent on
-set shortmess=atI "ÎÚ¸É´ï
+
+set shortmess=atI "ä¹Œå¹²è¾¾
 
 
-" ²»±¸·İ
-set nobackup " ²»Éú³É±¸·İÎÄ¼ş
-"set nowritebackup " ±£´æÎÄ¼şÊ±²»±¸·İ
-set noswapfile " ²»Éú³É½»»»ÎÄ¼ş
+" ä¸å¤‡ä»½
+set nobackup " ä¸ç”Ÿæˆå¤‡ä»½æ–‡ä»¶
+"set nowritebackup " ä¿å­˜æ–‡ä»¶æ—¶ä¸å¤‡ä»½
+set noswapfile " ä¸ç”Ÿæˆäº¤æ¢æ–‡ä»¶
 
-set history=1024
+set history=500
 set autochdir
 set whichwrap=b,s,<,>,[,]
-set nobomb "É¾³ıÎÄ¼şµÄBOM
 set backspace=eol,start,indent
 set clipboard+=unnamed
-"set winaltkeys=no " ÉèÖÃ alt ¼ü²»Ó³Éäµ½²Ëµ¥À¸
+"set winaltkeys=no " è®¾ç½® alt é”®ä¸æ˜ å°„åˆ°èœå•æ 
 "set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 "set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gb18030,gbk,big5,gb18030,cp936,latin1
 set encoding=utf-8
+
 set langmenu=zh_CN
 let $LANG = 'en_US.UTF-8'
 set guifont=Consolas:h13:cANSI
 "set guifontwide=Consolas:h13:cGB2312
 set lines=25 columns=90
+
 syntax enable
-syntax on "¸ßÁÁ
-"²»ÏÔÊ¾¹¤¾ß/²Ëµ¥À¸
+syntax on "é«˜äº®
+
+"ä¸æ˜¾ç¤ºå·¥å…·/èœå•æ 
 set guioptions-=T
 set guioptions-=m
 set guioptions-=L
 set guioptions-=r
 set guioptions-=b
-"Ê¹ÓÃÄÚÖÃ tab ÑùÊ½¶ø²»ÊÇ gui
+"ä½¿ç”¨å†…ç½® tab æ ·å¼è€Œä¸æ˜¯ gui
 set guioptions-=e
-"±à¼­_vimrc
-map <leader>v :e $MYVIMRC<CR>
-map <leader>s :source $MYVIMRC<CR>
-"filetype on
-"filetype indent on
+
 set background=dark
 colorscheme habiLight
-set number "ĞĞºÅ
+set number "è¡Œå·
 set relativenumber
-set ruler "ÏÔÊ¾¹â±êµ±Ç°Î»ÖÃ
-set cursorline "¸ßÁÁµ±Ç°ĞĞ
-"set showmode "ÓÒÏÂ½ÇÏÔÊ¾µ±Ç° vim Ä£Ê½
-set autoread "ÎÄ¼şÄÚÈİ¸Ä±ä×Ô¶¯¼ÓÔØ
+set ruler "æ˜¾ç¤ºå…‰æ ‡å½“å‰ä½ç½®
+set cursorline "é«˜äº®å½“å‰è¡Œ
+"set showmode "å³ä¸‹è§’æ˜¾ç¤ºå½“å‰ vim æ¨¡å¼
+set autoread "æ–‡ä»¶å†…å®¹æ”¹å˜è‡ªåŠ¨åŠ è½½
 
 
 set novisualbell "?
-set ignorecase "´óĞ¡Ğ´²»Ãô¸Ğ
-set incsearch "ÊäÈë×Ö·û´®¾ÍÏÔÊ¾Æ¥Åäµã
+set ignorecase "å¤§å°å†™ä¸æ•æ„Ÿ
+set incsearch "è¾“å…¥å­—ç¬¦ä¸²å°±æ˜¾ç¤ºåŒ¹é…ç‚¹
+
 """""
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set textwidth=79
 set expandtab
-set autoindent "Ã¿ĞĞËõ½øÓëÉÏÒ»ĞĞÏàµÈ
+set autoindent "æ¯è¡Œç¼©è¿›ä¸ä¸Šä¸€è¡Œç›¸ç­‰
 set fileformat=unix
 """""
+
+cd $HOME
+cd desktop
+
+nmap <leader>w :w!<CR>
+nmap <leader>q :q!<CR>
+nmap <leader>i :PluginInstall<CR>
+nmap <leader>c :PluginClean<CR>
+"ç¼–è¾‘_vimrc
+map <leader>v :e $MYVIMRC<CR>
+map <leader>s :source $MYVIMRC<CR>
+"source $VIMRUNTIME\delmenu.vim
+"source $VIMRUNTIME\menu.vim
+
+set pythonthreedll=python36.dll
+
+autocmd BufNewFile *.cpp,*.c exec ":call SetComment()" 
+
+" åŠ å…¥æ³¨é‡Š 
+function SetComment()
+	call setline(1,"#include <iostream>") 
+	call append(line("."), "")
+	call append(line(".")+1, "int main()") 
+	call append(line(".")+2, "{")
+	call append(line(".")+3, "    ")
+	call append(line(".")+4, "}")
+    exec "5"
+endfunction
 
 map <F5> :call TestRun()<CR>
 function! TestRun()
@@ -113,44 +141,6 @@ function! TestRun()
     endif
 endfunction!
 
-cd $HOME
-cd desktop
-
-
-" µ±ĞÂ½¨ .h .c .hpp .cpp .mk .shµÈÎÄ¼şÊ±×Ô¶¯µ÷ÓÃSetTitle º¯Êı
-autocmd BufNewFile *.cpp,*.c exec ":call SetComment()" 
-
-" ¼ÓÈë×¢ÊÍ 
-func SetComment()
-	call setline(1,"#include <iostream>") 
-	call append(line("."), "")
-	call append(line(".")+1, "int main()") 
-	call append(line(".")+2, "{")
-	call append(line(".")+3, "    ")
-	call append(line(".")+4, "}")
-    exec "5"
-endfunc
-
-nmap <leader>w :w!<CR>
-nmap <leader>q :q!<CR>
-nmap <leader>i :PluginInstall<CR>
-nmap <leader>c :PluginClean<CR>
-"source $VIMRUNTIME\delmenu.vim
-"source $VIMRUNTIME\menu.vim
-
-au FileType python inoremap <buffer> $r return 
-au FileType python inoremap <buffer> $i import
-au FileType python inoremap <buffer> $p' print('')
-au FileType python inoremap <buffer> $p" print("")
-set pythonthreedll=python36.dll
-function BOM()
-    if &bomb
-        set nobomb
-        exec "w"
-        echo 'del bom'
-    else
-    endif
-endfunction
 let g:hex=0
 function HEX()
     if g:hex==0
@@ -160,6 +150,18 @@ function HEX()
         exec "%!xxd -r"
         let g:hex=0
     endif
+endfunction
+function BOM()
+    if &bomb
+        set nobomb
+        exec "w"
+        echo 'del bom'
+    else
+        echo 'nobomb'
+    endif
+endfunction
+function Ee()
+    echom 'echo'
 endfunction
 nmap <leader>b :call BOM()<CR>
 nmap <leader>h :call HEX()<CR>
