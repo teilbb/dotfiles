@@ -1,4 +1,3 @@
-"OK
 scriptencoding utf-8
 if has('vim_starting')
     if &compatible
@@ -39,9 +38,9 @@ set shortmess=atI "乌干达
 
 
 " 不备份
-set nobackup
-set nowritebackup
-set noswapfile
+set nobackup " 不生成备份文件
+"set nowritebackup " 保存文件时不备份
+set noswapfile " 不生成交换文件
 
 set history=1024
 set autochdir
@@ -59,6 +58,7 @@ let $LANG = 'en_US.UTF-8'
 set guifont=Consolas:h13:cANSI
 "set guifontwide=Consolas:h13:cGB2312
 set lines=25 columns=90
+syntax enable
 syntax on "高亮
 "不显示工具/菜单栏
 set guioptions-=T
@@ -143,3 +143,23 @@ au FileType python inoremap <buffer> $i import
 au FileType python inoremap <buffer> $p' print('')
 au FileType python inoremap <buffer> $p" print("")
 set pythonthreedll=python36.dll
+function BOM()
+    if &bomb
+        set nobomb
+        exec "w"
+        echo 'del bom'
+    else
+    endif
+endfunction
+let g:hex=0
+function HEX()
+    if g:hex==0
+        exec "%!xxd"
+        let g:hex=1
+    else
+        exec "%!xxd -r"
+        let g:hex=0
+    endif
+endfunction
+nmap <leader>b :call BOM()<CR>
+nmap <leader>h :call HEX()<CR>
