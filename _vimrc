@@ -1,7 +1,7 @@
 scriptencoding utf-8
 if has('vim_starting')
     if &compatible
-        set nocompatible "去掉VI一致性
+        set nocompatible " 去掉VI一致性
     endif
 endif
 filetype off
@@ -9,11 +9,15 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'Yggdroot/indentLine' "对其代码的虚线
-Plugin 'tpope/vim-sensible' "每个人都同意的配置
+Plugin 'Yggdroot/indentLine' " 对齐代码的虚线
+Plugin 'tpope/vim-sensible' " 每个人都同意的配置
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'SpaceVim/SpaceVim'
+Plugin 'sjl/badwolf'
+Plugin 'tomasr/molokai'
+Plugin 'vim-scripts/habiLight'
+Plugin 'altercation/vim-colors-solarized'
+
 " -----------------------------------------------
 " 加强版状态条
 " -----------------------------------------------
@@ -35,10 +39,11 @@ let g:lightline = {
 call vundle#end() 
 filetype plugin indent on
 
-set shortmess=atI "乌干达
+set background=light
+colorscheme solarized "habiLight
 
+set shortmess=atI
 
-" 不备份
 set nobackup " 不生成备份文件
 "set nowritebackup " 保存文件时不备份
 set noswapfile " 不生成交换文件
@@ -47,8 +52,9 @@ set history=500
 set autochdir
 set whichwrap=b,s,<,>,[,]
 set backspace=eol,start,indent
+nmap <leader>l :set list!<CR>
+set listchars=tab:~\ ,eol:$
 set clipboard+=unnamed
-"set winaltkeys=no " 设置 alt 键不映射到菜单栏
 "set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 "set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gb18030,gbk,big5,gb18030,cp936,latin1
@@ -56,12 +62,15 @@ set encoding=utf-8
 
 set langmenu=zh_CN
 let $LANG = 'en_US.UTF-8'
-set guifont=Consolas:h13:cANSI
+set guifont=Knack\ NF:h13
+"set guifont=Consolas:h13:cANSI
+"set guifont=Bitstream_Vera_Sans_Mono:h13:cANSI
+"set guifontwide=Consolas:h13
 "set guifontwide=Consolas:h13:cGB2312
 set lines=25 columns=90
 
 syntax enable
-syntax on "高亮
+syntax on
 
 "不显示工具/菜单栏
 set guioptions-=T
@@ -72,17 +81,12 @@ set guioptions-=b
 "使用内置 tab 样式而不是 gui
 set guioptions-=e
 
-set background=dark
-colorscheme habiLight
-set number "行号
+set number
 set relativenumber
-set ruler "显示光标当前位置
-set cursorline "高亮当前行
-"set showmode "右下角显示当前 vim 模式
+set cursorline
+set ruler
 set autoread "文件内容改变自动加载
 
-
-set novisualbell "?
 set ignorecase "大小写不敏感
 set incsearch "输入字符串就显示匹配点
 
@@ -96,18 +100,12 @@ set autoindent "每行缩进与上一行相等
 set fileformat=unix
 """""
 
-cd $HOME
-cd desktop
-
 nmap <leader>w :w!<CR>
 nmap <leader>q :q!<CR>
 nmap <leader>i :PluginInstall<CR>
 nmap <leader>c :PluginClean<CR>
-"编辑_vimrc
-map <leader>v :e $MYVIMRC<CR>
-map <leader>s :source $MYVIMRC<CR>
-"source $VIMRUNTIME\delmenu.vim
-"source $VIMRUNTIME\menu.vim
+nmap <leader>v :e $MYVIMRC<CR>
+nmap <leader>s :source $MYVIMRC<CR>
 
 set pythonthreedll=python36.dll
 
@@ -151,6 +149,7 @@ function HEX()
         let g:hex=0
     endif
 endfunction
+
 function BOM()
     if &bomb
         set nobomb
@@ -159,9 +158,6 @@ function BOM()
     else
         echo 'nobomb'
     endif
-endfunction
-function Ee()
-    echom 'echo'
 endfunction
 nmap <leader>b :call BOM()<CR>
 nmap <leader>h :call HEX()<CR>
