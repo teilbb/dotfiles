@@ -30,7 +30,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'itchyny/lightline.vim'
 
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -105,7 +105,7 @@ set pythonthreedll=python36.dll
 
 " function
 " 加入注释 
-autocmd BufNewFile *.cpp,*.c exec ":call SetComment()" 
+autocmd BufNewFile *.cpp,*.c execute ":call SetComment()" 
 function SetComment()
 	call setline(1,"#include <iostream>") 
 	call append(line("."), "")
@@ -113,23 +113,23 @@ function SetComment()
 	call append(line(".")+2, "{")
 	call append(line(".")+3, "    ")
 	call append(line(".")+4, "}")
-    exec "5"
+    execute "5"
 endfunction
 
 map <F5> :call TestRun()<CR>
 function! TestRun()
-    exec "w"
+    execute "w"
     if &filetype == 'python'
-        exec "!python % && echo."
+        execute "!python % && echo."
     elseif &filetype == 'cpp'
-        "exec "!complete % -o %<"
-        exec "!g++ % -o %< && %<.exe"
-        "exec "!%<"
+        "execute "!complete % -o %<"
+        execute "!g++ % -o %< && %<.exe"
+        "execute "!%<"
     elseif &filetype == 'c'
-        exec "!g++ % -o %< && %<.exe"
+        execute "!g++ % -o %< && %<.exe"
     elseif &filetype == 'rust'
-        exec ":cd %:p:h"
-        exec "!cargo run"
+        execute ":cd %:p:h"
+        execute "!cargo run"
     endif
 endfunction!
 
@@ -137,10 +137,10 @@ nmap <leader>h :call HEX()<CR>
 let g:hex=0
 function HEX()
     if g:hex==0
-        exec "%!xxd"
+        execute "%!xxd"
         let g:hex=1
     else
-        exec "%!xxd -r"
+        execute "%!xxd -r"
         let g:hex=0
     endif
 endfunction
@@ -149,7 +149,7 @@ nmap <leader>b :call BOM()<CR>
 function BOM()
     if &bomb
         set nobomb
-        exec "w"
+        execute "w"
         echo 'del bom'
     else
         echo 'nobomb'
