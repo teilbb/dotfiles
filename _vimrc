@@ -4,6 +4,12 @@ if has('vim_starting')
         set nocompatible " 去掉VI一致性
     endif
 endif
+set shortmess=atI
+
+set encoding=utf-8
+"set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+"set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gb18030,gbk,big5,gb18030,cp936,latin1
 filetype off
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -42,8 +48,6 @@ filetype plugin indent on
 set background=light
 colorscheme solarized "habiLight
 
-set shortmess=atI
-
 set nobackup " 不生成备份文件
 "set nowritebackup " 保存文件时不备份
 set noswapfile " 不生成交换文件
@@ -52,21 +56,9 @@ set history=500
 set autochdir
 set whichwrap=b,s,<,>,[,]
 set backspace=eol,start,indent
-nmap <leader>l :set list!<CR>
-set listchars=tab:~\ ,eol:$
 set clipboard+=unnamed
-"set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-"set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
-set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gb18030,gbk,big5,gb18030,cp936,latin1
-set encoding=utf-8
 
-set langmenu=zh_CN
-let $LANG = 'en_US.UTF-8'
-set guifont=Knack\ NF:h13
-"set guifont=Consolas:h13:cANSI
-"set guifont=Bitstream_Vera_Sans_Mono:h13:cANSI
-"set guifontwide=Consolas:h13
-"set guifontwide=Consolas:h13:cGB2312
+set guifont=Consolas:h13
 set lines=25 columns=90
 
 syntax enable
@@ -106,12 +98,14 @@ nmap <leader>i :PluginInstall<CR>
 nmap <leader>c :PluginClean<CR>
 nmap <leader>v :e $MYVIMRC<CR>
 nmap <leader>s :source $MYVIMRC<CR>
+set listchars=tab:~\ ,eol:$
+nmap <leader>l :set list!<CR>
 
 set pythonthreedll=python36.dll
 
-autocmd BufNewFile *.cpp,*.c exec ":call SetComment()" 
-
+" function
 " 加入注释 
+autocmd BufNewFile *.cpp,*.c exec ":call SetComment()" 
 function SetComment()
 	call setline(1,"#include <iostream>") 
 	call append(line("."), "")
@@ -139,6 +133,7 @@ function! TestRun()
     endif
 endfunction!
 
+nmap <leader>h :call HEX()<CR>
 let g:hex=0
 function HEX()
     if g:hex==0
@@ -150,6 +145,7 @@ function HEX()
     endif
 endfunction
 
+nmap <leader>b :call BOM()<CR>
 function BOM()
     if &bomb
         set nobomb
@@ -159,5 +155,3 @@ function BOM()
         echo 'nobomb'
     endif
 endfunction
-nmap <leader>b :call BOM()<CR>
-nmap <leader>h :call HEX()<CR>
