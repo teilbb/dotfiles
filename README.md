@@ -4,7 +4,7 @@ git commit -m 'commit'
 git push
 ```
 ```
- git fetch origin master:tmp
+git fetch origin master:tmp
 git diff tmp 
 git merge tmp
 git branch -d tmp
