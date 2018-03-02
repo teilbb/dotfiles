@@ -116,6 +116,18 @@ function SetComment()
     execute "5"
 endfunction
 
+":silent {command}
+":!start {command}
+":!start cmd /c "command1 param" && command2 
+":echom system("ls")
+
+map <leader>nn :call NppEdit()<CR>
+function! NppEdit()
+    execute "w"
+    execute ":silent !npp.lnk %:p"
+    execute ":e %:p"
+endfunction!
+
 map <F5> :call TestRun()<CR>
 function! TestRun()
     execute "w"
